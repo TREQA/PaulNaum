@@ -7,6 +7,30 @@
     <groupId>paulproject</groupId>
     <artifactId>paulproject</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                    <suiteXmlFiles>
+                            <suiteXmlFile>C:\projects\ss\automatedtestslearning\src\test\resources\testng_suite.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-testng</artifactId>
+                        <version>2.20.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+
     <dependencies>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -87,5 +111,7 @@
         </dependency>
 
     </dependencies>
+
+
 
 </project>
