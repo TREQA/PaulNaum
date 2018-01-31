@@ -16,7 +16,7 @@
                 <version>2.20.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                            <suiteXmlFile>C:\projects\ss\automatedtestslearning\src\test\resources\testng_suite.xml</suiteXmlFile>
+                            <suiteXmlFile>src\test\resources\testng_suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
