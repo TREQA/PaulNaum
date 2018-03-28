@@ -10,7 +10,7 @@ public class Wait {
 
 
     public static WebElement clickable(WebDriver driver, By locator) {
-        return new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(locator));
+        return new WebDriverWait(driver,Date.longWait).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public static WebElement visible(WebDriver driver, By locator) {

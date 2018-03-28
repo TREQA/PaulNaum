@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
+import util.DriverBase;
 
 
 public class ManualEntry {
@@ -16,7 +17,7 @@ public class ManualEntry {
     @Test
     public void ManualEntryTest() throws InterruptedException {
 
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = DriverBase.getDriver();
 
         driver.get(Date.URL);
         driver.manage().window().maximize();

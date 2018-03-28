@@ -1,12 +1,14 @@
 package AutomationFramework.tests;
 
 import AutomationFramework.Date;
+import AutomationFramework.Wait;
 import PageObjects.BasePage;
 import PageObjects.LogInPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
+import util.DriverBase;
 
 
 public class LogIn {
@@ -14,7 +16,7 @@ public class LogIn {
     @Test
     public void LogInTest() throws InterruptedException {
 
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = DriverBase.getDriver();
         driver.get(Date.URL);
         driver.manage().window().maximize();
         AssertJUnit.assertEquals("Coats Colour Express", driver.getTitle());
@@ -30,7 +32,6 @@ public class LogIn {
 
         System.out.println("Logging off..");
         lip.logoutCoats();
-        driver.quit();
 
     }
 }

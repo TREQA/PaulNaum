@@ -3,9 +3,11 @@ package PageObjects;
 import AutomationFramework.Date;
 import AutomationFramework.Wait;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.AssertJUnit;
+import org.openqa.selenium.support.FindBy;
+
 
 import java.io.IOException;
 
@@ -25,7 +27,7 @@ public class LogInPage extends BasePage {
     }
 
     public static WebElement getHomePageTitle() {
-        return driver.findElement(homePageTitle);
+        return Wait.visible(driver, homePageTitle);
     }
 
     public void loginCoats(String username, String password) {
@@ -39,7 +41,10 @@ public class LogInPage extends BasePage {
 
     public void navigateEcomm() {
         Wait.clickable(driver, pagMain).click();
-        Wait.clickable(driver, pagEcomm).click();
+        Wait.visible(driver, pagEcomm);
+        WebElement element = driver.findElement(pagEcomm);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
     public void navigateCce() {
