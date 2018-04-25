@@ -20,7 +20,7 @@ public class DriverFactory {
     private WebDriver webdriver;
     private DriverType selectedDriverType;
 
-    private final DriverType defaultDriverType = FIREFOX;
+    private final DriverType defaultDriverType = null;
     private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
     private final String systemArchitecture = System.getProperty("os.arch");
