@@ -15,6 +15,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.Parameters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +25,7 @@ import java.util.List;
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
 public enum DriverType implements DriverSetup {
+
 
     CHROME {
         public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {

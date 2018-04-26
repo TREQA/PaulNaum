@@ -32,7 +32,7 @@ public class CCE_Ship_to_party {
         stp.searchCustomerSTP(driver);
         System.out.println("Searching Customer's Ship to Party");
         stp.editSTP(driver);
-        cceEditSTPPage estp = new cceEditSTPPage();
+        cceEditSTPPage estp = new cceEditSTPPage(driver);
         estp.disableSTP(driver);
         stp.searchCustomerSTP(driver);
         AssertJUnit.assertEquals("icon-status-2", stp.stpStatus(driver).getAttribute("class"));
@@ -67,7 +67,7 @@ public class CCE_Ship_to_party {
         stp.searchCustomerSTP(driver);
         System.out.println("Searching Customer's Ship to Party");
         stp.editSTP(driver);
-        cceEditSTPPage estp = new cceEditSTPPage();
+        cceEditSTPPage estp = new cceEditSTPPage(driver);
         estp.enableSTP(driver);
         stp.searchCustomerSTP(driver);
         AssertJUnit.assertEquals("icon-status-1", stp.stpStatus(driver).getAttribute("class"));
@@ -100,7 +100,7 @@ public class CCE_Ship_to_party {
         stp.searchCustomerSTP(driver);
         System.out.println("Searching Customer's Ship to Party");
         stp.editSTP(driver);
-        cceEditSTPPage estp = new cceEditSTPPage();
+        cceEditSTPPage estp = new cceEditSTPPage(driver);
         estp.disableSTP(driver);
 
         System.out.println("Navigating to eComm...");

@@ -9,7 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class cceEditSTPPage {
+public class cceEditSTPPage extends BasePage{
+
+    public cceEditSTPPage(WebDriver passedDriver) {
+        super(passedDriver);
+    }
     By statusOn = By.xpath("//*[@id=\"ShipToPartyStatusId1\"]");
     By statusOff = By.xpath("//*[@id=\"ShipToPartyStatusId2\"]");
     By save = By.xpath("//*[@id=\"ShipToPartyEditForm\"]/div[3]/ul/li[1]/input");
