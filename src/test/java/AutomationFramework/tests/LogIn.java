@@ -11,12 +11,11 @@ import org.testng.annotations.Test;
 import util.DriverBase;
 
 
-public class LogIn {
+public class LogIn extends BaseTest {
 
-    @Test
-    public void LogInTest() throws InterruptedException {
+    @Test(dataProvider = "provideDrivers")
+    public void logInTest(WebDriver driver) throws InterruptedException {
 
-        WebDriver driver = DriverBase.getDriver();
         driver.get(Date.URL);
         driver.manage().window().maximize();
         AssertJUnit.assertEquals("Coats Colour Express", driver.getTitle());
@@ -24,10 +23,10 @@ public class LogIn {
 
         System.out.println("Logging in...");
         LogInPage lip = new LogInPage(driver);
-        lip.loginCoats(Date.userName,Date.userPass);
+        lip.loginCoats(Date.userName, Date.userPass);
         System.out.println("Navigating eComm...");
         lip.navigateEcomm();
-        AssertJUnit.assertTrue(LogInPage.getHomePageTitle().isDisplayed());
+        AssertJUnit.assertTrue(lip.getHomePageTitle().isDisplayed());
         System.out.println("eComm reached.");
 
         System.out.println("Logging off..");

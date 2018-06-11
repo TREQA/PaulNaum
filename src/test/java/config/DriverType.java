@@ -3,24 +3,18 @@ package config;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.annotations.Parameters;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
@@ -44,7 +38,7 @@ public enum DriverType implements DriverSetup {
     FIREFOX {
         public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.addPreference("marionette", true);
+            //firefoxOptions.addPreference("marionette", true);
             return addProxySettings(firefoxOptions, proxySettings);
         }
 
@@ -95,23 +89,6 @@ public enum DriverType implements DriverSetup {
         public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new OperaDriver(capabilities);
         }
-    },
-    PHANTOMJS {
-        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
-            DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
-            final List<String> cliArguments = new ArrayList<String>();
-            cliArguments.add("--web-security=false");
-            cliArguments.add("--ssl-protocol=any");
-            cliArguments.add("--ignore-ssl-errors=true");
-            capabilities.setCapability("phantomjs.cli.args", applyPhantomJSProxySettings(cliArguments, proxySettings));
-            capabilities.setCapability("takesScreenshot", true);
-
-            return capabilities;
-        }
-
-        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
-            return new PhantomJSDriver(capabilities);
-        }
     };
     //,
 //    CHROME_HEADLESS {
@@ -138,15 +115,5 @@ public enum DriverType implements DriverSetup {
         }
 
         return capabilities;
-    }
-
-    protected List<String> applyPhantomJSProxySettings(List<String> cliArguments, Proxy proxySettings) {
-        if (null == proxySettings) {
-            cliArguments.add("--proxy-type=none");
-        } else {
-            cliArguments.add("--proxy-type=http");
-            cliArguments.add("--proxy=" + proxySettings.getHttpProxy());
-        }
-        return cliArguments;
     }
 }

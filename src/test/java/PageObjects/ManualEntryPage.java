@@ -1,6 +1,7 @@
 package PageObjects;
 
 import AutomationFramework.Date;
+import AutomationFramework.Wait;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -91,7 +92,8 @@ public class ManualEntryPage extends BasePage {
     }
 
     public void navManualEntry(){
-        driver.findElement(orderTab).click();
+        Wait.clickable(driver, orderManualEntry);
+        //driver.findElement(orderTab).click();
         driver.findElement(orderManualEntry).click();
     }
     public void setProfileDetails() {

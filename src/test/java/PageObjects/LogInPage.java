@@ -26,17 +26,17 @@ public class LogInPage extends BasePage {
         super(passedDriver);
     }
 
-    public static WebElement getHomePageTitle() {
+    public WebElement getHomePageTitle() {
         return Wait.visible(driver, homePageTitle);
     }
 
     public void loginCoats(String username, String password) {
         WebElement usernameField = Wait.clickable(driver, userNameLocator);
         WebElement userpassField = Wait.clickable(driver, userPassLocator);
+        usernameField.click();
         usernameField.sendKeys(username);
         userpassField.sendKeys(password);
         Wait.clickable(driver, btnLogin).click();
-
     }
 
     public void navigateEcomm() {
@@ -50,6 +50,9 @@ public class LogInPage extends BasePage {
     public void navigateCce() {
         Wait.clickable(driver, pagMain).click();
         Wait.clickable(driver, pagCCE).click();
+        WebElement element = driver.findElement(pagCCE);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
     public void logoutCoats() {

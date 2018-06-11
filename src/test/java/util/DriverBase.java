@@ -2,6 +2,7 @@ package util;
 
 import PageObjects.BasePage;
 import config.DriverFactory;
+import config.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -61,17 +62,18 @@ public class DriverBase extends BasePage {
 
     public static WebDriver getDriver()  {
         DriverFactory driverFactory = new DriverFactory();
-        WebDriver webDriver = driverFactory.getDriver();
+        WebDriver webDriver = driverFactory.getDriver(null);
         webDriverPool.add(webDriver);
         return webDriver;
     }
 
-    @AfterMethod(alwaysRun = true)
-    public static void clearCookies() throws Exception {
-        getDriver().manage().deleteAllCookies();
+    public static WebDriver getDriver(DriverType driverType){
+        DriverFactory driverFactory = new DriverFactory();
+        WebDriver webDriver = driverFactory.getDriver(driverType);
+        webDriverPool.add(webDriver);
+        return webDriver;
     }
 
-    @AfterSuite(alwaysRun = true)
     public static void closeDriverObjects() {
         for (WebDriver driver : webDriverPool) {
             driver.quit();

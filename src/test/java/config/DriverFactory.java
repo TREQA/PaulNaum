@@ -20,7 +20,7 @@ public class DriverFactory {
     private WebDriver webdriver;
     private DriverType selectedDriverType;
 
-    private final DriverType defaultDriverType = CHROME;
+    private final DriverType defaultDriverType = FIREFOX;
     private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
     private final String systemArchitecture = System.getProperty("os.arch");
@@ -31,8 +31,7 @@ public class DriverFactory {
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
 
 
-
-    public WebDriver getDriver(){
+    public WebDriver getDriver(DriverType driverType) {
         if (null == webdriver) {
             Proxy proxy = null;
             if (proxyEnabled) {
@@ -41,10 +40,13 @@ public class DriverFactory {
                 proxy.setHttpProxy(proxyDetails);
                 proxy.setSslProxy(proxyDetails);
             }
-            determineEffectiveDriverType();
+            if (driverType == null)
+                determineEffectiveDriverType();
+            else {
+                selectedDriverType = driverType;
+            }
             MutableCapabilities mutableCapabilities = selectedDriverType.getDesiredCapabilities(proxy);
             instantiateWebDriver(mutableCapabilities);
-            //Query.initQueryObjects(webdriver);
         }
 
         return webdriver;

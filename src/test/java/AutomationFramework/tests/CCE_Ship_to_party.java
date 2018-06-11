@@ -2,18 +2,14 @@ package AutomationFramework.tests;
 
 import AutomationFramework.Date;
 import PageObjects.*;
-import config.DriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-import util.DriverBase;
 
-public class CCE_Ship_to_party {
+public class CCE_Ship_to_party extends BaseTest {
 
-    @Test
-    public void STPFlagDisable() throws InterruptedException {
-        WebDriver driver = DriverBase.getDriver();
+    @Test(dataProvider = "provideDrivers")
+    public void STPFlagDisable(WebDriver driver) throws InterruptedException {
 
         driver.get(Date.URL);
         driver.manage().window().maximize();
@@ -41,15 +37,8 @@ public class CCE_Ship_to_party {
 
 
 
-    @Test
-    public void STPFlagEnable()  {
-        WebDriver driver = DriverBase.getDriver();
-//        try {
-//            driver = new DriverFactory().getDriver();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            driver = new ChromeDriver();
-//        }
+    @Test(dataProvider = "provideDrivers")
+    public void STPFlagEnable(WebDriver driver)  {
 
         driver.get(Date.URL);
         driver.manage().window().maximize();
@@ -75,15 +64,9 @@ public class CCE_Ship_to_party {
         driver.quit();
     }
 
-    @Test
-    public void STPDisabledFlagOrder() {
-        WebDriver driver = DriverBase.getDriver();
-//        try {
-//            driver = new DriverFactory().getDriver();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            driver = new ChromeDriver();
-//        }
+    @Test(dataProvider = "provideDrivers")
+    public void STPDisabledFlagOrder(WebDriver driver) {
+
         driver.get(Date.URL);
         driver.manage().window().maximize();
 

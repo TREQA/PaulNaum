@@ -1,16 +1,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Test Suite" thread-count="2" parallel="tests">
-    <test name="ChromeTest">
-        <parameter name="browser" value="Chrome" />
-        <packages>
-            <package name="AutomationFramework.tests"/>
-        </packages>
-    </test>
-    <test name="FirefoxTest">
-        <parameter name="browser" value="Firefox"/>
-        <packages>
-            <package name="AutomationFramework.tests"/>
-        </packages>
-    </test>
+    <!--<test name="ChromeTest">-->
+        <!--<parameter name="browser" value="Chrome" />-->
+        <!--<packages>-->
+            <!--<package name="AutomationFramework.tests"/>-->
+        <!--</packages>-->
+    <!--</test>-->
+    <!--<test name="FirefoxTest">-->
+        <!--<parameter name="browser" value="Firefox"/>-->
+        <!--<packages>-->
+            <!--<package name="AutomationFramework.tests"/>-->
+        <!--</packages>-->
+    <!--</test>-->
 </suite>
