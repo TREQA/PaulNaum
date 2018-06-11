@@ -36,9 +36,8 @@ public class CCE_Ship_to_party extends BaseTest {
     }
 
 
-
     @Test(dataProvider = "provideDrivers")
-    public void STPFlagEnable(WebDriver driver)  {
+    public void STPFlagEnable(WebDriver driver) {
 
         driver.get(Date.URL);
         driver.manage().window().maximize();
@@ -95,7 +94,7 @@ public class CCE_Ship_to_party extends BaseTest {
         mep.navManualEntry();
         mep.setProfileDisabledSTPDetails();
         System.out.println("Entering details...");
-        AssertJUnit.assertEquals( false, mep.checkSTP(ManualEntryPage.mShipToParty));
+        AssertJUnit.assertEquals(false, mep.checkSTP(ManualEntryPage.mShipToParty));
         System.out.println("Wanted ship to party not found, as expected.");
         driver.quit();
     }

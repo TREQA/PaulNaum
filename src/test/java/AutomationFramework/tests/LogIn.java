@@ -1,14 +1,10 @@
 package AutomationFramework.tests;
 
 import AutomationFramework.Date;
-import AutomationFramework.Wait;
-import PageObjects.BasePage;
 import PageObjects.LogInPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-import util.DriverBase;
 
 
 public class LogIn extends BaseTest {

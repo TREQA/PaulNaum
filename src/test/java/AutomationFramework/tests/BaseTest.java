@@ -1,15 +1,11 @@
 package AutomationFramework.tests;
 
 import config.DriverType;
-import org.testng.IMethodInstance;
-import org.testng.ITestContext;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.IParameterizable;
 import util.DriverBase;
-
-import java.lang.reflect.Method;
 
 public class BaseTest {
 
@@ -21,8 +17,16 @@ public class BaseTest {
         };
     }
 
-    @AfterSuite(alwaysRun = true)
-    public static void closeDrivers(){
-        DriverBase.closeDriverObjects();
+
+    @AfterMethod(alwaysRun = true)
+    public void destroyBrowser(ITestResult testResult) {
+        Object[] params = testResult.getParameters();
+        for (Object param : params) {
+            if (param instanceof WebDriver) {
+                ((WebDriver) param).quit();
+            }
+        }
     }
+
+
 }

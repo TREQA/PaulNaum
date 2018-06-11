@@ -1,17 +1,13 @@
 package AutomationFramework.tests;
 
 import AutomationFramework.Date;
-import AutomationFramework.Wait;
 import PageObjects.BasePage;
 import PageObjects.ConfirmPage;
 import PageObjects.LogInPage;
 import PageObjects.ManualEntryPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-import util.DriverBase;
 
 
 public class ManualEntry extends BaseTest {
