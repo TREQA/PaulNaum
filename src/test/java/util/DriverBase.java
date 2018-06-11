@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
 public class DriverBase extends BasePage {
 
     public DriverBase(WebDriver passedDriver) {
